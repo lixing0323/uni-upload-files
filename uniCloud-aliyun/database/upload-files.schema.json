@@ -1,0 +1,42 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"title": "文件名"
+		},
+		"content": {
+			"bsonType": "string",
+			"title": "所有内容"
+		},
+		"size": {
+			"bsonType": "number",
+			"title": "文件大小"
+		},
+		"url": {
+			"bsonType": "string",
+			"title": "文件路径"
+		},
+		"create_date": {
+			"bsonType": "timestamp",
+			"description": "创建时间",
+			"forceDefaultValue": {
+				"$env": "now"
+			}
+		},
+		"time": {
+			"bsonType": "string",
+			"description": "上传时间"
+		}
+	}
+}

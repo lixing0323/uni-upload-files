@@ -11,18 +11,26 @@
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
-		"tagid": {
+		"type": {
 			"bsonType": "string",
-			"description": "标签tagid",
-			"label": "标签tagid",
+			"description": "归类",
+			"label": "归类",
 			"componentForEdit": {
 				"name": "uni-easyinput"
 			}
 		},
-		"name": {
+		"username": {
 			"bsonType": "string",
-			"description": "标签名称",
-			"label": "标签名称",
+			"description": "负责人",
+			"label": "负责人",
+			"componentForEdit": {
+				"name": "uni-easyinput"
+			}
+		},
+		"tag": {
+			"bsonType": "string",
+			"description": "标识码",
+			"label": "标识码",
 			"componentForEdit": {
 				"name": "uni-easyinput"
 			}

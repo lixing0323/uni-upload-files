@@ -35,8 +35,8 @@
 				<uni-table :loading="loading" border stripe :emptyText="$t('common.empty')" @selection-change="selectionChange">
 					<uni-tr>
 						<uni-th align="center">序号</uni-th>
-						<uni-th width="150" align="center">上传时间</uni-th>
-						<uni-th width="150" align="center">文件名称</uni-th>
+						<uni-th width="220" align="center">上传时间</uni-th>
+						<uni-th width="220" align="center">文件名称</uni-th>
 						<uni-th align="center">文件大小</uni-th>
 						<uni-th align="center">路径</uni-th>
 						<uni-th width="204" align="center">设置</uni-th>

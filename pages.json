@@ -217,6 +217,27 @@
 			]
 		},
 		{
+			"root": "pages/list",
+			"pages": [{
+				"path": "data/list",
+				"style": {
+					"navigationBarTitleText": "数据管理"
+				}
+			},
+			{
+				"path": "data/add",
+				"style": {
+					"navigationBarTitleText": "新增数据"
+				}
+			},
+			{
+				"path": "data/edit",
+				"style": {
+					"navigationBarTitleText": "编辑数据"
+				}
+			}]
+		},
+		{
 			"root": "pages/demo",
 			"pages": [{
 					"path": "icons/icons",

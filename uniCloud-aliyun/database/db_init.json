@@ -256,7 +256,7 @@
 				"enable": true,
 				"menu_id": "safety_statistics_user_log",
 				"name": "用户日志",
-				"icon": "",
+				"icon": "admin-icons-safety",
 				"url": "/pages/system/safety/list",
 				"sort": 3101,
 				"parent_id": "safety_statistics",

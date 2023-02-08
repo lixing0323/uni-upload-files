@@ -27,6 +27,7 @@
 					<uni-tr>
 						<uni-th align="center">序号</uni-th>
 						<uni-th align="center">用户名</uni-th>
+						<uni-th align="center">昵称</uni-th>
 						<uni-th align="center">内容</uni-th>
 						<uni-th align="center">IP</uni-th>
 						<uni-th align="center">时间</uni-th>
@@ -35,6 +36,7 @@
 					<uni-tr v-for="(item, index) in data" :key="index">
 						<uni-td align="center">{{ (pagination.current - 1) * pagination.size + (index + 1) }}</uni-td>
 						<uni-td align="center">{{ (item.user_id[0] && item.user_id[0].username) || '-' }}</uni-td>
+						<uni-td align="center">{{item.user_id[0] && item.user_id[0].nickname || '-'}}</uni-td>
 						<uni-td align="center">{{ item.type === 'login' ? '登入' : '登出' }}</uni-td>
 						<uni-td align="center">{{ item.ip }}</uni-td>
 						<uni-td align="center"><uni-dateformat :date="item.create_date" :threshold="[0, 0]" /></uni-td>
@@ -146,7 +148,7 @@ export default {
 		getBrowserValue(value) {
 			if (value && value.length > 0) {
 				const index = value.indexOf(')');
-				return value.substr(0, index);
+				return value.substr(0, index + 1);
 			}
 		}
 	}

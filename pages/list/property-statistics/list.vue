@@ -12,7 +12,7 @@
 		<view class="uni-container">
 			<unicloud-db
 				ref="udb"
-				collection="uni-id-tag"
+				collection="property-statistics-management"
 				:field="field"
 				:where="where"
 				page-data="replace"
@@ -28,18 +28,22 @@
 				<uni-table ref="table" :loading="loading" :emptyText="error.message || '没有更多数据'" border stripe type="selection" @selection-change="selectionChange">
 					<uni-tr>
 						<uni-th align="center">序号</uni-th>
-						<uni-th align="center">归类</uni-th>
-						<uni-th align="center">负责人</uni-th>
-						<uni-th align="center">标识码</uni-th>
-						<uni-th align="center">时间</uni-th>
+						<uni-th align="center">名称</uni-th>
+						<uni-th align="center">容量</uni-th>
+						<uni-th align="center">介绍</uni-th>
+						<uni-th align="center">类别</uni-th>
+						<uni-th align="center">耗时</uni-th>
+						<uni-th align="center">备注</uni-th>
 						<uni-th align="center">操作</uni-th>
 					</uni-tr>
 					<uni-tr v-for="(item, index) in data" :key="index">
 						<uni-td align="center">{{ index + 1 }}</uni-td>
-						<uni-td align="center">{{ item.type }}</uni-td>
-						<uni-td align="center">{{ item.username }}</uni-td>
-						<uni-td align="center">{{ item.tag }}</uni-td>
-						<uni-td align="center">{{ new Date(item.create_date).toLocaleDateString() }}</uni-td>
+						<uni-td width="200" align="center">{{ item.name }}</uni-td>
+						<uni-td width="100" align="center">{{ item.volumn }}</uni-td>
+						<uni-td width="160" align="center">{{ item.introduce }}</uni-td>
+						<uni-td width="100" align="center">{{ item.category }}</uni-td>
+						<uni-td width="100" align="center">{{ item.time_consuming }}</uni-td>
+						<uni-td align="center">{{ item.comment }}</uni-td>
 						<uni-td>
 							<view class="uni-group">
 								<button class="uni-button" size="mini" type="primary" @click="navigateTo('./edit?id=' + item._id)">{{ $t('common.button.edit') }}</button>
@@ -82,7 +86,7 @@ const orderByMapping = {
 export default {
 	data() {
 		return {
-			field: 'type,create_date,username,tag',
+			field: 'name,volumn,introduce,comment,category,time_consuming',
 			options: {
 				pageSize: 20,
 				pageCurrent: 1

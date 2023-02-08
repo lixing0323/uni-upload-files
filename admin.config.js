@@ -40,46 +40,47 @@ export default {
 	},
 	sideBar: { // 左侧菜单
 		// 配置静态菜单列表（放置在用户被授权的菜单列表下边）
-		staticMenu: [
-			{
-				menu_id: "list",
-				text: '数据列表',
-				icon: 'admin-icons-kaifashili',
-				url: "",
-				children: [{
-					menu_id: "upload",
-					text: '文件上传',
-					icon: 'admin-icons-icon',
-					value: '/pages/demo/table/table',
-				}, {
-					menu_id: "data",
-					text: '数据管理',
-					icon: 'admin-icons-table',
-					value: '/pages/list/data/list',
-				}]
+		staticMenu: [{
+			menu_id: "list",
+			text: '数据列表',
+			icon: 'admin-icons-kaifashili',
+			url: "",
+			children: [{
+				menu_id: "upload",
+				text: '文件上传管理',
+				icon: 'admin-icons-icon',
+				value: '/pages/demo/table/table',
 			}, {
-				menu_id: "system",
-				text: '系统管理',
-				icon: 'admin-icons-eco',
-				url: "",
-				children: [{
+				menu_id: "data",
+				text: '类别管理',
+				icon: 'admin-icons-table',
+				value: '/pages/list/data/list',
+			}, {
+				menu_id: "property-statistics",
+				text: '财产管理',
+				icon: 'admin-icons-pulgin',
+				value: '/pages/list/property-statistics/list',
+			}]
+		}, {
+			menu_id: "system",
+			text: '系统管理',
+			icon: 'admin-icons-eco',
+			url: "",
+			children: [{
+					menu_id: "user",
+					icon: 'admin-icons-manager-user',
+					text: '用户管理',
+					value: '/pages/system/user/list',
+					role: ['admin']
+				},
+				{
 					menu_id: "log",
 					icon: 'admin-icons-doc',
 					text: '日志管理',
-					value: 'pages/system/safety/list'
-				}, {
-					menu_id: "stat-doc",
-					icon: 'admin-icons-help',
-					text: 'uni 统计教程',
-					value: 'https://uniapp.dcloud.net.cn/uni-stat-v2.html'
-				}, {
-					menu_id: "admin-pulgin",
-					icon: 'admin-icons-pulgin',
-					text: 'uni-admin 插件',
-					value: 'https://ext.dcloud.net.cn/?cat1=7&cat2=74'
-				}]
-			}
-		]
+					value: '/pages/system/safety/list'
+				}
+			]
+		}]
 	},
 	uniStat: {
 		// 上传 sourceMap 文件至腾讯云服务空间 ID。空值代表不启用 sourceMap 上报错误回溯源码功能

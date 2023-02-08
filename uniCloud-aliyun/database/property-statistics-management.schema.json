@@ -1,0 +1,39 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"bsonType": "string",
+			"description": "名称"
+		},
+		"volumn": {
+			"bsonType": "string",
+			"description": "容量"
+		},
+		"introduce": {
+			"bsonType": "string",
+			"description": "介绍"
+		},
+		"comment": {
+			"bsonType": "string",
+			"description": "备注"
+		},
+		"category": {
+			"bsonType": "string",
+			"description": "类别"
+		},
+		"time_consuming": {
+			"bsonType": "string",
+			"description": "耗时"
+		}
+	}
+}

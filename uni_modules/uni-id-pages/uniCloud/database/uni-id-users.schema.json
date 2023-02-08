@@ -200,11 +200,7 @@
 			"bsonType": "string",
 			"description": "用户昵称",
 			"title": "昵称",
-			"trim": "both",
-			"permission": {
-				"read": true,
-				"write": "doc._id == auth.uid || 'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
-			}
+			"trim": "both"
 		},
 		"password": {
 			"bsonType": "password",
@@ -372,11 +368,7 @@
 			"bsonType": "string",
 			"description": "用户名，不允许重复",
 			"title": "用户名",
-			"trim": "both",
-			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
-				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
-			}
+			"trim": "both"
 		},
 		"wx_openid": {
 			"bsonType": "object",

@@ -1,8 +1,11 @@
 {
 	"bsonType": "object",
-	"required": ["user_id"],
+	"required": [],
 	"permission": {
-		"read": "'READ_UNI_ID_LOG' in auth.permission"
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
 	},
 	"properties": {
 		"_id": {

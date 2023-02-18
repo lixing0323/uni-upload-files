@@ -57,7 +57,7 @@ export default {
 				value: '/pages/list/data/list',
 			}, {
 				menu_id: "property-statistics",
-				text: '财产管理',
+				text: '消防产品识别数据库',
 				icon: 'admin-icons-pulgin',
 				value: '/pages/list/property-statistics/list',
 			}]

@@ -13,7 +13,7 @@
 			<view class="navbar-left">
 				<view class="logo pointer" @click="linkTo">
 					<image class="logo-image" :src="logo" mode="heightFix"></image>
-					<text class="logo-text">文件上传系统</text>
+					<text class="logo-text">数字化消防产品识别管理软件</text>
 				</view>
 				<uni-icons @click="toggleSidebar" type="bars" class="menu-icon" size="30" color="#999"></uni-icons>
 			</view>

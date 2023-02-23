@@ -47,19 +47,9 @@ export default {
 			url: "",
 			children: [{
 				menu_id: "upload",
-				text: '文件上传管理',
+				text: '消防产品识别数据库',
 				icon: 'admin-icons-icon',
 				value: '/pages/demo/table/table',
-			}, {
-				menu_id: "data",
-				text: '类别管理',
-				icon: 'admin-icons-table',
-				value: '/pages/list/data/list',
-			}, {
-				menu_id: "property-statistics",
-				text: '消防产品识别数据库',
-				icon: 'admin-icons-pulgin',
-				value: '/pages/list/property-statistics/list',
 			}]
 		}, {
 			menu_id: "system",

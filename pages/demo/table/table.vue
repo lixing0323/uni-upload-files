@@ -32,7 +32,7 @@
 						<uni-td align="center">{{ getTypeName(item) }}</uni-td>
 						<uni-td align="center">{{ getSizeValue(item.size) }}</uni-td>
 						<uni-td align="center">
-							<a class="path" :href="item.url" target="_blank">预览</a>
+							<view class="underline" @click="openNewWindow(item)">预览</view>
 						</uni-td>
 						<uni-td>
 							<view class="uni-group">
@@ -52,11 +52,15 @@
 		</view>
 
 		<uni-popup ref="qrDialog" id="qrDialog" type="dialog">
-			<uni-popup-dialog type="info" :before-close="true" cancelText="下载" confirmText="关闭" @close="doDownload()"
-				@confirm="closeDialog()" :title="dialogTitle">
-				<view class="qrcode">
-					<uqrcode ref="uqrcode" canvas-id="qrcode" :value="qrCodeValue" :options="{ margin: 10 }"></uqrcode>
-				</view>
+			<uni-popup-dialog type="info" :before-close="true" cancelText="下载" confirmText="关闭" @close="htmlToCanvas()"
+				@confirm="closeDialog()" title="二维码显示">
+				<div ref="html" class="code-content">
+					<div class="title"> {{ dialogTitle }}</div>
+					<div class="qrcode">
+						<uqrcode ref="uqrcode" canvas-id="qrcode" :value="qrCodeValue" :options="{ margin: 10 }">
+						</uqrcode>
+					</div>
+				</div>
 				<template v-slot:loading>
 					<text style="color: green;">loading...</text>
 				</template>
@@ -67,12 +71,14 @@
 
 <script>
 	import tableData from './tableData.js';
+	import html2canvas from "html2canvas"
 
 	const db = uniCloud.database();
 	const dbCmd = db.command;
 	const dbCollectionName = 'upload-files';
 
 	export default {
+		components: {},
 		data() {
 			return {
 				field: 'content,time,size,name,url,_id',
@@ -88,7 +94,8 @@
 				where: '',
 				orderby: 'time desc',
 				qrCodeValue: '',
-				dialogTitle: ''
+				dialogTitle: '',
+				cancelText: ''
 			};
 		},
 		onLoad() {},
@@ -144,6 +151,9 @@
 				this.$refs.udb.loadData({
 					current: e.current
 				});
+			},
+			openNewWindow(item) {
+				window.open(item.url, '_blank', 'location=no');
 			},
 			changeSize(pageSize) {
 				this.options.pageSize = pageSize;
@@ -217,6 +227,7 @@
 				this.$refs.udb.remove(item._id);
 			},
 			openDialog(item) {
+				this.cancelText = ' '
 				this.$refs.qrDialog.open();
 				this.dialogTitle = item.name;
 				const extname = JSON.parse(item.content).extname
@@ -228,10 +239,40 @@
 			closeDialog() {
 				this.$refs.qrDialog.close();
 			},
+			qrcodeComplete() {
+				this.cancelText = '下载';
+			},
 			drawQRCode(url) {
 				this.qrCodeValue = url;
 			},
-			doDownload() {
+			onPreview(item) {
+				window.open(item.url, "_blank", "innerHeight=600,innerWidth=800");
+				// this.makeToDownload(item.name, item.url)
+			},
+			htmlToCanvas() {
+				html2canvas(this.$refs.html, {
+						backgroundColor: '#ffffff',
+						dpi: 800,
+						scale: 3
+					})
+					.then(canvas => {
+						const imgUrl = canvas.toDataURL('image/png')
+						this.makeToDownload(`${this.fileName}.png`, imgUrl)
+					})
+			},
+			makeToDownload(filename, url) {
+				const eleLink = document.createElement('a')
+				eleLink.download = filename
+				eleLink.style.display = 'none'
+				// 字符内容转变成blob地址
+				eleLink.href = url
+				// 触发点击
+				document.body.appendChild(eleLink)
+				eleLink.click()
+				// // 然后移除
+				document.body.removeChild(eleLink)
+			},
+			test() {
 				this.$refs.uqrcode.toTempFilePath({
 					success: res => {
 						// 这里是获取到的图片base64编码,这里只是个例子哈，要自行编码图片替换这里才能测试看到效果
@@ -284,5 +325,16 @@
 	.path {
 		color: #007BFF;
 		cursor: pointer;
+	}
+
+	.underline {
+		cursor: pointer;
+		color: #007BFF;
+		text-decoration: underline;
+	}
+
+	.title {
+		font-weight: bold;
+		text-align: center;
 	}
 </style>

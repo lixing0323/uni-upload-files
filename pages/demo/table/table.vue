@@ -32,7 +32,7 @@
 						<uni-td align="center">{{ getTypeName(item) }}</uni-td>
 						<uni-td align="center">{{ getSizeValue(item.size) }}</uni-td>
 						<uni-td align="center">
-							<view class="underline" @click="openNewWindow(item)">预览</view>
+							<view class="underline" @click="onPreview(item)">预览</view>
 						</uni-td>
 						<uni-td>
 							<view class="uni-group">
@@ -55,7 +55,7 @@
 			<uni-popup-dialog type="info" :before-close="true" cancelText="下载" confirmText="关闭" @close="htmlToCanvas()"
 				@confirm="closeDialog()" title="二维码显示">
 				<div ref="html" class="code-content">
-					<div class="title"> {{ dialogTitle }}</div>
+					<div class="title"> {{ fileName }}</div>
 					<div class="qrcode">
 						<uqrcode ref="uqrcode" canvas-id="qrcode" :value="qrCodeValue" :options="{ margin: 10 }">
 						</uqrcode>
@@ -247,7 +247,6 @@
 			},
 			onPreview(item) {
 				window.open(item.url, "_blank", "innerHeight=600,innerWidth=800");
-				// this.makeToDownload(item.name, item.url)
 			},
 			htmlToCanvas() {
 				html2canvas(this.$refs.html, {
